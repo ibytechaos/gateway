@@ -15,6 +15,7 @@ import { getRuntimeKey } from 'hono/adapter';
 import { requestValidator } from './middlewares/requestValidator';
 import { hooks } from './middlewares/hooks';
 import { memoryCache } from './middlewares/cache';
+import { langfuse } from './middlewares/langfuse';
 
 // Handlers
 import { proxyHandler } from './handlers/proxyHandler';
@@ -92,6 +93,9 @@ app.use('*', prettyJSON());
 if (getRuntimeKey() === 'node') {
   app.use(logger());
 }
+
+// Use Langfuse tracing middleware for all routes
+app.use('*', langfuse());
 
 // Support the /v1/models endpoint
 app.get('/v1/models', modelsHandler);

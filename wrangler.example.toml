@@ -1,0 +1,14 @@
+# Cloudflare Workers Configuration Example
+name = "portkey-gateway"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[env.production.vars]
+LANGFUSE_PUBLIC_KEY = "pk-lf-..."
+LANGFUSE_SECRET_KEY = "sk-lf-..."
+LANGFUSE_BASE_URL = "https://cloud.langfuse.com"
+
+[env.staging.vars]
+LANGFUSE_PUBLIC_KEY = "pk-lf-..."
+LANGFUSE_SECRET_KEY = "sk-lf-..."
+LANGFUSE_BASE_URL = "https://cloud.langfuse.com"
